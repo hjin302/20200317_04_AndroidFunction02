@@ -27,10 +27,28 @@ public class MainActivity extends AppCompatActivity {
 //                => 전화걸기 화면!
 
 //                어느 화면으로 갈지 => 안드로이드가 요구하는 양식으로 작성: Uri
-                Uri uri = Uri.parse("tel: 01012345678");
+
+//                응용문제 : EditText에 입력한폰번으로 전화 걸도록.
+                String phoneNum = binding.inputPhoneNum.getText().toString();
+
+                String phoneUriStr = String.format("tel:%s", phoneNum);
+
+                Uri uri = Uri.parse(phoneUriStr);
                 Intent intent = new Intent(Intent.ACTION_DIAL, uri);
                 startActivity(intent);
 
+            }
+        });
+
+        binding.callBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+//                현재까지 배운것만으론 실행불가 :
+
+                Uri uri = Uri.parse("tel:01095253290");
+                Intent intent = new Intent(Intent.ACTION_CALL, uri);
+                startActivity(intent);
             }
         });
     }
